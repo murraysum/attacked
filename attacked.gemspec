@@ -4,10 +4,10 @@ Gem::Specification.new do |spec|
   spec.name        = "attacked"
   spec.version     = Attacked::VERSION
   spec.authors     = ["Murray Summers"]
-  spec.email       = ["murray@tito.io"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Attacked."
-  spec.description = "TODO: Description of Attacked."
+  spec.email       = ["murray.sum@gmail.com"]
+  spec.homepage    = "https://github.com/murraysum/attacked"
+  spec.summary     = "Attacked."
+  spec.description = "Attacked."
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -15,10 +15,10 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/murraysum/attacked"
+  spec.metadata["changelog_uri"] = "https://github.com/murraysum/attacked"
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 6.1.4", ">= 6.1.4.4"
+  spec.add_dependency "rails", "~> 6.1.4"
 end
