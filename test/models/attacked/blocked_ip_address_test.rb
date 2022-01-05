@@ -21,6 +21,15 @@ module Attacked
       assert_equal ["is invalid"], blocked_ip_address.errors[:ip_address]
     end
 
+    test "validates the ip address is unique" do
+      BlockedIpAddress.create ip_address: "1.2.3.4"
+
+      blocked_ip_address = BlockedIpAddress.new ip_address: "1.2.3.4"
+      assert blocked_ip_address.invalid?
+
+      assert blocked_ip_address.errors[:ip_address].include?("has already been blocked")
+    end
+
     test "blocking an ip address" do
       ip_address = "1.2.3.4"
 

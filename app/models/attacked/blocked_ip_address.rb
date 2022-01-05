@@ -10,6 +10,9 @@ module Attacked
     validates :ip_address, format: {
       with: Regexp.union(Resolv::IPv4::Regex, Resolv::IPv6::Regex)
     }
+    validates :ip_address, uniqueness: {
+      message: "has already been blocked"
+    }
 
     def self.blocked?(ip_address)
       Rails.cache.read(blocked_cache_key(ip_address)) ? true : false
