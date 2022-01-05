@@ -3,6 +3,10 @@ require "test_helper"
 module Attacked
   class BlockedIpAddressTest < ActiveSupport::TestCase
 
+    setup do
+      Rails.cache.clear
+    end
+
     test "validates an ip address is present" do
       blocked_ip_address = BlockedIpAddress.new
       assert blocked_ip_address.invalid?
