@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors     = ["Murray Summers"]
   spec.email       = ["murray.sum@gmail.com"]
   spec.homepage    = "https://github.com/murraysum/attacked"
-  spec.summary     = "Attacked."
-  spec.description = "Attacked."
+  spec.summary     = "Manage a persisted list of blocked IP addresses"
+  spec.description = "Manage a persisted list of blocked IP addresses and block these requests"
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
