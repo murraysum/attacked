@@ -4,7 +4,7 @@ module Attacked
   class BlockedIpAddressTest < ActiveSupport::TestCase
 
     setup do
-      Rails.cache.clear
+      Attacked.cache.clear
     end
 
     test "validates an ip address is present" do

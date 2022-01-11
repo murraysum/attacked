@@ -15,7 +15,7 @@ module Attacked
     }
 
     def self.blocked?(ip_address)
-      Rails.cache.read(blocked_cache_key(ip_address)) ? true : false
+      Attacked.cache.read(blocked_cache_key(ip_address)) ? true : false
     end
 
     def self.block(ip_address)
@@ -34,11 +34,11 @@ module Attacked
     private
 
     def create_in_cache
-      Rails.cache.write(blocked_cache_key(ip_address), true)
+      Attacked.cache.write(blocked_cache_key(ip_address), true)
     end
 
     def remove_from_cache
-      Rails.cache.delete(blocked_cache_key(ip_address))
+      Attacked.cache.delete(blocked_cache_key(ip_address))
     end
 
     def self.blocked_cache_key(ip_address)
