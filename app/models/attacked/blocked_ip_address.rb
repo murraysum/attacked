@@ -27,6 +27,22 @@ module Attacked
       blocked_ip_address.unblock
     end
 
+    def self.resync!
+      if Attacked.cache.respond_to?(:delete_matched)
+        Attacked.cache.delete_matched("attacked_blocked_ip *")
+      else
+        # Fallback: brute-force delete by iterating database entries
+        all.find_each do |blocked|
+          Attacked.cache.delete(blocked_cache_key(blocked.ip_address))
+        end
+      end
+
+      # 2. Rebuild cache from the database
+      all.find_each do |blocked|
+        Attacked.cache.write(blocked_cache_key(blocked.ip_address), true)
+      end
+    end
+
     def unblock
       destroy
     end

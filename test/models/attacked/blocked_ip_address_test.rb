@@ -50,5 +50,18 @@ module Attacked
 
       refute BlockedIpAddress.blocked?(ip_address)
     end
+
+    test "resync cache" do
+      ip_address = "1.2.3.4"
+      blocked_ip_address = BlockedIpAddress.block(ip_address)
+      assert BlockedIpAddress.blocked?(ip_address)
+
+      blocked_ip_address.send(:remove_from_cache)
+      refute BlockedIpAddress.blocked?(ip_address)
+
+      BlockedIpAddress.resync!
+
+      assert BlockedIpAddress.blocked?(ip_address)
+    end
   end
 end
