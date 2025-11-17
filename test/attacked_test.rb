@@ -13,7 +13,7 @@ class AttackedTest < ActiveSupport::TestCase
   test "a cache can be configured" do
     cache = ActiveSupport::Cache::NullStore.new
 
-    Attacked.setup do |config|
+    Attacked.config do |config|
       config.cache = cache
     end
 
@@ -21,7 +21,7 @@ class AttackedTest < ActiveSupport::TestCase
     assert_equal cache, Attacked.cache
 
     # reset the cache back to the rails cache
-    Attacked.setup do |config|
+    Attacked.config do |config|
       config.cache = Rails.cache
     end
   end

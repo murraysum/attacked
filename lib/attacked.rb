@@ -6,7 +6,7 @@ module Attacked
 
   mattr_writer :cache
 
-  def self.setup
+  def self.config
     yield self
   end
 

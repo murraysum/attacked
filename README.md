@@ -39,7 +39,7 @@ Install [rack-attack](https://github.com/rack/rack-attack) as usual and setup a 
 # Block attacks from IPs
 # To block an IP: Attacked::BlockedIpAddress.block("1.2.3.4")
 # To unblock an IP: Attacked::BlockedIpAddress.unblock("1.2.3.4")
-blocklist("block ips") do |req|
+blocklist("block_ips") do |req|
   Attacked::BlockedIpAddress.blocked?(req.ip)
 end
 ```
@@ -50,7 +50,7 @@ to setup a custom cache store you can create a `config/initializers/attacked.rb`
 the cache store:
 
 ```ruby
-Attacked.setup do |config|
+Attacked.config do |config|
   config.cache = ActiveSupport::Cache::MemCacheStore.new("localhost", "server-downstairs.localnetwork:8229")
 end
 ```
