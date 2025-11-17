@@ -42,11 +42,11 @@ module Attacked
     end
 
     def self.blocked_cache_key(ip_address)
-      "attacked_blocked_ip #{ip_address}"
+      "attacked_blocked_ip_#{ip_address}"
     end
 
     def blocked_cache_key(ip_address)
-      "attacked_blocked_ip #{ip_address}"
+      "attacked_blocked_ip_#{ip_address}"
     end
   end
 end
