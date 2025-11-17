@@ -39,13 +39,21 @@ Install [rack-attack](https://github.com/rack/rack-attack) as usual and setup a 
 # Block attacks from IPs
 # To block an IP: Attacked::BlockedIpAddress.block("1.2.3.4")
 # To unblock an IP: Attacked::BlockedIpAddress.unblock("1.2.3.4")
-blocklist("block ips") do |req|
+blocklist("block_ips") do |req|
   Attacked::BlockedIpAddress.blocked?(req.ip)
 end
 ```
 
 Please note that `Attacked` defaults to using the `Rails.cache` when caching blocked
-IP addresses. As such you must setup a cache store for your application.
+IP addresses. As such you must setup a cache store for your application. If you'd like
+to setup a custom cache store you can create a `config/initializers/attacked.rb` and configure
+the cache store:
+
+```ruby
+Attacked.config do |config|
+  config.cache = ActiveSupport::Cache::MemCacheStore.new("localhost", "server-downstairs.localnetwork:8229")
+end
+```
 
 ### Usage
 
